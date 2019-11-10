@@ -6,7 +6,7 @@ public class JPGRequest extends Request{
 	
 	public JPGRequest() 
 	{
-		this.type = 49; // 1 to bedzie string , 0 to bedzie jpg
+		this.type = 49; // 1 to bedzie zdjecie , 0 to bedzie string
 	}
 	
 	@Override
@@ -17,9 +17,9 @@ public class JPGRequest extends Request{
 			this.next = new StringRequest();
 			return (IRequest) this.next.handleRequest(codedContent);
 		}
-		else
+		else if(this.type.equals(codedContent[0]))
 		{
-			System.out.println("zdjecie");
+			System.out.println("Otrzymalem zdjecie");
 			this.data = codedContent;
 		    for(int i = 1; i < codedContent.length; i++)
 		    {
@@ -28,6 +28,7 @@ public class JPGRequest extends Request{
 		    System.out.println();
 			return this;
 		}
+		return null;
 	}
 
 	@Override

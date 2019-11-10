@@ -21,9 +21,9 @@ public class StringRequest extends Request{
 		{	
 			return (IRequest) this.next.handleRequest(codedContent);
 		}
-		else
+		else if(this.type.equals(codedContent[0]))
 		{
-			System.out.println("tekst");
+			System.out.println("Otrzymalem tekst");
 			this.data = codedContent;
 		    for(int i = 1; i < codedContent.length; i++)
 		    {
@@ -32,6 +32,7 @@ public class StringRequest extends Request{
 		    System.out.println();
 			return this;
 		}
+		return null;
 	}
 
 	@Override

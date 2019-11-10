@@ -20,4 +20,6 @@ public abstract class Request implements IRequest{
 		return this.data;
 	}
 	public abstract byte[] code(String content) throws IOException;
+	
 }
+
